@@ -76,16 +76,16 @@
           "icon": "globe"
         },
         {
-          "anchor": "Support",
-          "href": "https://neterial.io/contact",
-          "icon": "headset"
-        },
-        {
           "anchor": "Blog",
           "href": "https://neterial.io/blog",
           "icon": "newspaper"
         }
-      ]
+        {
+          "anchor": "Support",
+          "href": "https://neterial.io/contact",
+          "icon": "headset"
+        },
+
     }
   },
   "logo": {
