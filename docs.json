@@ -29,7 +29,7 @@
               "essentials/navigation"
             ]
           },
-          {
+ /*         {
             "group": "Writing content",
             "pages": [
               "essentials/markdown",
@@ -37,7 +37,7 @@
               "essentials/images",
               "essentials/reusable-snippets"
             ]
-          },
+          }, */
           {
             "group": "AI tools",
             "pages": [
