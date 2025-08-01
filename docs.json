@@ -71,9 +71,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://neterial.io",
+          "icon": "globe"
         },
         {
           "anchor": "Community",
@@ -82,7 +82,7 @@
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://neterial.io/blog",
           "icon": "newspaper"
         }
       ]
