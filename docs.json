@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Docs",
         "groups": [
           {
             "group": "Getting started",
@@ -23,10 +23,18 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Cloud Providers",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "cloud-providers/connect-aws",
+              "cloud-providers/connect-hetzner-cloud"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/deploy-your-first-app",
+              "guides/ingress-nginx",
+              "guides/cert-manager"
             ]
           },
           {
