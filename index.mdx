@@ -1,98 +1,91 @@
 ---
-title: "Introduction"
-mode: "wide"
-description: "Welcome to the new home for your documentation"
+title: 'Getting Started'
+description: 'This guide will take you from initial registration to a running Kubernetes cluster using the CLI. You can also do this in the UI [web console](https://console.neterial.io)'
 ---
 
-## Setting up
+## 1. Sign up for Neterial
 
-Get your documentation site up and running in minutes.
+Install CLI:
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+```sh
+curl -sSL https://get.neterial.io/cli.sh | bash
+```
 
-## Make it yours
+Sign up and log in with the Neterial CLI:
 
-Design a docs site that looks great and empowers your users.
+```sh
+neterial auth login
+```
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+## 2. Connect your cloud
 
-## Create beautiful pages
+Neterial installs and manages resources in your cloud account and requires access credentials for your chosen provider.
 
-Everything you need to create world-class documentation.
+Choose one of the following cloud providers:
+* [Connect Hetzner Cloud](Cloud-providers/connect-hetzner-cloud.md)
+* [Connect AWS cloud](Cloud-providers/connect-aws.md)
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+Each guide will walk you through the necessary permissions and authentication setup.
 
-## Need inspiration?
+Verify that the cloud is connected:
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+```sh
+neterial provider list
+```
+
+Example output:
+```console
+NAME            STATUS          LAST_UPDATE
+AWS             Uninitialized
+Hetzner Cloud   Ready           2 seconds
+```
+
+## 3. Create the cluster
+
+Create a Kubernetes cluster with the following command:
+
+```sh
+neterial kube create cluster --cloud [PROVIDER]
+```
+
+Replace:
+- `PROVIDER` with either `hcloud` (for Hetzner Cloud) or `aws` (for AWS)
+
+Verify that your cluster was created successfully:
+
+```sh
+neterial kube get clusters
+```
+
+Example output:
+```console
+NAME      STATUS   PROVIDER        LOCATION   AGE          VERSION
+default   Ready    Hetzner Cloud   hel1       5 minutes    1.32
+```
+
+## 4. Get access to the cluster
+
+```sh
+kubectl config use-context default-neterial-admin@default-neterial
+kubectl get nodes
+```
+
+Verify that you can access your cluster:
+
+```sh
+kubectl get nodes
+```
+
+Example output:
+
+```console
+NAME                       STATUS   ROLES           AGE     VERSION
+nks-default-ctl-1d39beb8   Ready    control-plane   9m39s   v1.32.3
+nks-default-wrk-5a451893   Ready    <none>          8m35s   v1.32.3
+```
+
+Congratulations! You now have a fully operational Kubernetes cluster managed by Neterial.
+
+## Next step
+
+Now that your cluster is running, you can **[Deploy Your First App](Guides/deploy-your-first-app.md)**.
