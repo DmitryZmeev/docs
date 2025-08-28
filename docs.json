@@ -16,10 +16,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "getting-started",
-              "development"
+              "index"
             ]
           },
           {
