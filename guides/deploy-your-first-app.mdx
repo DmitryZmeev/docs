@@ -78,11 +78,11 @@ To get the URL for your application, run:
 
 ```sh
 kubectl get service web-app -o go-template --template=\
-'&#123;&#123;range .status.loadBalancer.ingress&#125;&#125;'\
-'&#123;&#123;range $key, $val := . &#125;&#125;'\
-'&#123;&#123;if eq $key "ip" "hostname"&#125;&#125;http://&#123;&#123;$val&#125;&#125;&#123;&#123;"\n"&#125;&#125;&#123;&#123;end&#125;&#125;'\
-'&#123;&#123;end&#125;&#125;'\
-'&#123;&#123;end&#125;&#125;'
+'{{range .status.loadBalancer.ingress}}'\
+'{{range $key, $val := . }}'\
+'{{if eq $key "ip" "hostname"}}http://{{$val}}{{"\n"}}{{end}}'\
+'{{end}}'\
+'{{end}}'
 ```
 
 You should see one or more HTTP (http://...) links.
